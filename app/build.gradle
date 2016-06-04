@@ -1,9 +1,8 @@
 apply plugin: 'com.android.application'
-apply plugin: 'android-apt'
 
 android {
     compileSdkVersion 'android-N'
-    buildToolsVersion "24.0.0 rc3"
+    buildToolsVersion "24.0.0 rc4"
 
     defaultConfig {
         applicationId "com.hatenablog.techium.android_dagger2_sample"
@@ -11,9 +10,13 @@ android {
         targetSdkVersion 'N'
         versionCode 1
         versionName "1.0"
-//        jackOptions {
-//            enabled true
-//        }
+        jackOptions {
+            enabled true
+        }
+        compileOptions {
+            sourceCompatibility JavaVersion.VERSION_1_8
+            targetCompatibility JavaVersion.VERSION_1_8
+        }
     }
 
     buildTypes {
@@ -28,6 +31,6 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
     compile 'com.google.dagger:dagger:2.0.2'
-    apt 'com.google.dagger:dagger-compiler:2.0.2'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.0.2'
     provided 'org.glassfish:javax.annotation:10.0-b28'
 }
